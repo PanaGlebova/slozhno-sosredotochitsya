@@ -1,5 +1,358 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
-  /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+  background: url('../images/cover-image-dark.png') no-repeat center / cover fixed;
+  background-color: var(--backround-color);
+}
+
+.main {
+  padding: 10px;
+  margin-block-end: 30px;
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding: 20px;
+    margin-block-end: 40px;
+  }
+}
+
+.decorated-zone {
+  position: relative;
+}
+
+.decorated-zone::before {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 10px;
+  right: 10px;
+  border-inline-end: 1px solid var(--decorated-zone-color);
+  border-block-start: 1px solid var(--decorated-zone-color);
+  inline-size: 25px;
+  block-size: 24px;
+}
+
+.decorated-zone::after {
+  content: '';
+  position: absolute;
+  display: block;
+  bottom: 10px;
+  left: 10px;
+  border-block-end: 1px solid var(--decorated-zone-color);
+  border-inline-start: 1px solid var(--decorated-zone-color);
+  inline-size: 25px;
+  block-size: 24px;
+}
+
+@media (min-width: 768px) {
+  .decorated-zone::before {
+    top: 20px;
+    right: 20px;
+  }
+
+  .decorated-zone::after {
+    bottom: 20px;
+    left: 20px;
+  }
+}
+
+.section:not(:last-child) {
+  margin-block-end: 50px;
+}
+
+.content-section {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .section:not(:last-child) {
+    margin-block-end: 80px;
+  }
+
+  .content-section {
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content-section {
+    gap: 20px 10px;
+  }
+}
+
+.content-section__body {
+  display: grid;
+  gap: 20px;
+}
+
+.main-title {
+  font-weight: 700;
+  line-height: 83%;
+  word-break: break-word;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  color: var(--attention-color);
+  text-shadow: 4px 4px 0 var(--accent-color);
+}
+
+@media (min-width: 768px) {
+  .main-title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+}
+
+.title {
+  font-weight: 700;
+  line-height: 130%;
+  color: var(--title-color);
+}
+
+.title-decor {
+  font-weight: 700;
+  line-height: 130%;
+  color: var(--title-decor-color);
+  background-color: var(--accent-color);
+}
+
+.text {
+  line-height: 130%;
+  color: var(--text-color);
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.grid-wrapper {
+  display: grid;
+  gap: 20px;
+}
+
+.text-block__subtitle:not(:last-child) {
+  margin-block-end: 10px;
+}
+
+.text-block__subtitle_regular {
+  font-weight: 400;
+}
+
+.text-block__paragraphs {
+  display: grid;
+  gap: 10px;
+}
+
+.link:hover {
+  border-block-end: 1px solid currentColor;
+}
+
+.link:focus-visible {
+  outline: 1px solid currentColor;
+}
+
+/* header */
+.header {
+  padding: 10px;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr;
+  margin-block-end: 30px;
+  min-block-size: 668px;
+  block-size: 100vh;
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: 20px;
+    margin-block-end: 40px;
+  }
+}
+
+.header__decor {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  color: var(--accent-color);
+  line-height: 139%;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.header__decor::after {
+  content: '';
+  inline-size: 9px;
+  block-size: 9px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  box-shadow: 0 0 4px 2px var(--accent-color);
+}
+
+@media (min-width: 768px) {
+  .header__decor {
+    top: 20px;
+    right: 30px;
+  }
+
+  .header__title {
+    align-self: end;
+    margin-inline-start: -17px;
+  }
+}
+
+.header__theme-menu {
+  justify-self: end;
+  align-self: center;
+}
+
+@media (min-width: 1024px) {
+  .header__theme-menu {
+    justify-self: center;
+    align-self: start;
+  }
+}
+
+.header__theme-menu-list {
+  display: grid;
+  gap: 10px;
+}
+
+@media (min-width: 1024px) {
+  .header__theme-menu-list {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.header__theme-menu-button {
+  background: transparent;
+  color: var(--button-color);
+  text-transform: lowercase;
+  padding: 1.5px 13px;
+  line-height: 130%;
+}
+
+.header__theme-menu-button:hover {
+  border: 1px solid var(--button-hover-color);
+}
+
+.header__theme-menu-button:focus-visible {
+  outline: none;
+  border-block-end: 1px solid currentColor;
+}
+
+.header__theme-menu-button_active {
+  pointer-events: none;
+  border: 1px solid currentColor;
+}
+
+.header__subtitle {
+  align-self: center;
+  max-width: 364px;
+}
+
+@media (min-width: 768px) {
+  .header__subtitle {
+    justify-self: end;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header__subtitle {
+    max-width: 491px;
+  }
+}
+/* header */
+
+/* what-reduces-concentration */
+@media (min-width: 768px) {
+  .what-reduces-concentration {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .what-reduces-concentration__title {
+    max-width: 236px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .what-reduces-concentration__title {
+    max-width: 315px;
+  }
+
+  .what-reduces-concentration__body {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* what-reduces-concentration */
+
+/* how-concentrate-better  */
+.how-concentrate-better__subtitle:first-child {
+  margin-block-end: 20px;
+}
+/* how-concentrate-better  */
+
+/* gallery */
+.gallery__title {
+  margin-block-end: 10px;
+}
+
+@media (min-width: 768px) {
+  .gallery__title {
+    margin-block-end: 20px;
+  }
+}
+
+.gallery__images {
+  display: grid;
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .gallery__images {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+.gallery__image {
+  inline-size: 100%;
+  object-fit: cover;
+  object-position: center;
+  align-self: stretch;
+}
+
+@media (min-width: 768px) {
+  .gallery__image_sunset {
+    grid-column: 1 / 3;
+  }
+
+  .gallery__image_ice-cream {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+  }
+
+  .gallery__image_tape {
+    grid-row: 2 / 4;
+  }
+
+  .gallery__image_street {
+    grid-column: 2 / 4;
+  }
+}
+
+/* gallery */
+
+/* footer */
+.footer {
+  display: grid;
+  place-items: center;
+  min-block-size: 668px;
+  block-size: 100vh;
+}
+
+.footer__title {
+  text-shadow: 2px 2px 0 var(--accent-color);
 }
